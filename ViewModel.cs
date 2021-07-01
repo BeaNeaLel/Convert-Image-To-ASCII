@@ -8,7 +8,7 @@ namespace ConASCII
 {
 	public class ViewModel : INotifyPropertyChanged
 	{
-		private string dictonaryS = "█▓■▒▀░";
+		private string dictonaryS = "█▓▒░";
 		private InfoStorage infoStorage = new InfoStorage(System.Windows.Forms.Application.StartupPath + "\\default.bmp");
 		private RelayCommand openFile;
 		private RelayCommand runImageProcessing;
