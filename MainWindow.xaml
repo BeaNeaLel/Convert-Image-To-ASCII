@@ -1,0 +1,55 @@
+﻿<Window x:Class="ConASCII.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConASCII"
+        mc:Ignorable="d"
+        Title="Convertor Image to ASCII" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+
+        <!--Верхние кнопки контекстного меню-->
+        <Menu Grid.ColumnSpan="2" >
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Command="{Binding OpenFile}" />
+            </MenuItem>
+        </Menu>
+
+        <!--Правая панель настроек-->
+        <Grid Grid.Column="1" Grid.Row="1" Background="#FFE7E7E7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Label Margin="0">Dictonary</Label>
+                <TextBox Margin="5,0,10,30" Text="{Binding DictonaryS}"/>
+            </StackPanel>
+            
+            <Button Grid.Row="1" Command="{Binding RunImageProcessing}" Width="100"  HorizontalAlignment="Left" Margin="5,5,5,5">Run</Button>
+        </Grid>
+
+        <!--Левая панель превью изображения-->
+        <Grid Grid.Row="1"  Background="#FFEBEBEB">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Rectangle Fill="White" />
+            <Image Margin="5,5,5,5" DataContext="{Binding InfoStorage}" Source="{Binding ImagePath}" VerticalAlignment="Top"/>
+            
+            <Label Grid.Row="1" DataContext="{Binding InfoStorage}" Content="{Binding ImagePath}"/>
+        </Grid>
+    </Grid>
+</Window>
